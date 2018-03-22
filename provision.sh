@@ -56,7 +56,7 @@ install_kubernetes ()
   rm v1.9.6.tar.gz
   cd $BUILD_DIR
   # Build Kubernets
-  make -j2
+  make -j1
   # Install Kubernets
   mkdir -p /usr/local/bin
   cp -r _output/local/bin/linux/amd64/* /usr/local/bin/
@@ -129,3 +129,7 @@ rc-service iptables start
 rc-update add kubelet
 rc-service kubelet start
 
+# Install shutdown script
+mv /home/vagrant/shutdown.sh /usr/sbin/shutdown
+chown root:root /usr/sbin/shutdown
+chmod 755 /usr/sbin/shutdown
